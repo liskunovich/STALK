@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "stalk"
+version = "0.1.0"
+description = ""
+authors = [
+	"David <devid02ru@gmail.com>",
+	"Maxim <sinelnikov-web@mail.ru>",
+	"Alexey <tixigam@gmail.com>",
+]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
