@@ -47,12 +47,18 @@ async def get_leetcode(username: str) -> LeetCodeResponseModel:
 
 @social_router.get("/github-user")
 async def get_github(username: str) -> GitHubUserResponseModel:
-    return await Github().get_user(username)
+    response = await Github().get_user(username)
+    if response.get("status") != "404":
+        return response
+    raise HTTPException(status_code=404, detail="User not found")
 
 
 @social_router.get("/github-user-repos")
 async def get_github_repos(username: str) -> UserRepositoriesResponseModel:
-    return await Github().get_user_repos(username)
+    response = await Github().get_user_repos(username)
+    if response.get("status") != "404":
+        return response
+    raise HTTPException(status_code=404, detail="User not found")
 
 
 @social_router.post("/analyze-cv/")
