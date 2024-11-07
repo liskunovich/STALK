@@ -21,7 +21,7 @@ class UserActivitySummaryModel(BaseModel):
 
 class StepikActivitiesResponseModel(BaseModel):
     meta: MetaModel
-    user_activity_summaries: List[UserActivitySummaryModel]
+    user_activity_summaries: Optional[List[UserActivitySummaryModel]] = None
 
 
 class CertificateModel(BaseModel):

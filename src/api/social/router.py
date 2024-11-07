@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 
 from src.services.social.leetcode import LeetCode
 from src.services.social.stepik import StepikCertificates, StepikActivities
@@ -21,7 +21,10 @@ social_router = APIRouter()
 
 @social_router.get("/codeforce")
 async def get_codeforce(username: str) -> CodeforcesResponse:
-    return await CodeForces().get_response(username)
+    response = await CodeForces().get_response(username)
+    if response.get("status") == "OK":
+        return response
+    raise HTTPException(status_code=404, detail="User not found")
 
 
 @social_router.get("/stepik-activities")
@@ -36,7 +39,10 @@ async def get_stepik_certificates(user_id: str) -> StepikCertificatesResponseMod
 
 @social_router.get("/leetcode")
 async def get_leetcode(username: str) -> LeetCodeResponseModel:
-    return await LeetCode().get_response(username)
+    response = await LeetCode().get_response(username)
+    if response.get("status") == "success":
+        return response
+    raise HTTPException(status_code=404, detail="User not found")
 
 
 @social_router.get("/github-user")
