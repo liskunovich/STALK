@@ -1,0 +1,46 @@
+networks:
+  stalk_net:
+    name: stalk_net
+
+services:
+  nginx:
+    container_name: stalk_nginx
+    image: nginx
+    env_file:
+      - .env
+    ports:
+      - "$NGINX_MAIN_PORT"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/proxy_headers.conf:/etc/nginx/proxy_headers.conf
+      - ./nginx/cors_headers.conf:/etc/nginx/cors_headers.conf
+    depends_on:
+      - stalk_main
+    networks:
+      - stalk_net
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 15s
+        max_attempts: 3
+        window: 120s
+
+  stalk_main:
+    container_name: stalk_main
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    expose:
+      - "$STALK_MAIN_PORT"
+    networks:
+      - stalk_net
+    volumes:
+      - ./src:/src
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 15s
+        max_attempts: 3
+        window: 120s
