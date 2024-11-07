@@ -4,6 +4,8 @@ from src.services.social.leetcode import LeetCode
 from src.services.social.stepik import StepikCertificates, StepikActivities
 from src.services.social.codeforces import CodeForces
 from src.services.social.github import Github
+from src.services.analyze.analyze import Analyzator
+
 from .schemas.codeforces import CodeforcesResponse
 from .schemas.stepik import (
     StepikActivitiesResponseModel,
@@ -11,6 +13,8 @@ from .schemas.stepik import (
 )
 from .schemas.leetcode import LeetCodeResponseModel
 from .schemas.github import GitHubUserResponseModel, UserRepositoriesResponseModel
+from .schemas.analyze import CandidateProfile, CandidateCV
+
 
 social_router = APIRouter()
 
@@ -43,3 +47,8 @@ async def get_github(username: str) -> GitHubUserResponseModel:
 @social_router.get("/github-user-repos")
 async def get_github_repos(username: str) -> UserRepositoriesResponseModel:
     return await Github().get_user_repos(username)
+
+
+@social_router.post("/analyze-cv/")
+async def analyze_cv(cv: CandidateCV) -> CandidateProfile:
+    return await Analyzator().analyze_cv()
