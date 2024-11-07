@@ -5,7 +5,6 @@ cleanup() {
 	docker-compose -f docker-compose.yml stop
 }
 
-trap cleanup EXIT
 
 docker-compose -f docker-compose.yml build
 
