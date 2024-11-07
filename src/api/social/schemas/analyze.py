@@ -5,10 +5,8 @@ from pydantic import BaseModel
 class CandidateSocials(BaseModel):
     leetcode: Optional[str] = None
     codeforces: Optional[str] = None
-    github_user: Optional[str] = None
-    github_user_repos: Optional[str] = None
-    stepik_activities: Optional[str] = None
-    stepik_certificates: Optional[str] = None
+    github: Optional[str] = None
+    stepik: Optional[str] = None
 
 
 class CandidateCV(BaseModel):
