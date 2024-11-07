@@ -19,6 +19,7 @@ beautifulsoup4 = "^4.12.3"
 bs4 = "^0.0.2"
 fake-headers = "^1.0.2"
 brotli = "^1.1.0"
+openai = "^1.54.3"
 
 
 [build-system]
