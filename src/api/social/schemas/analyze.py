@@ -25,4 +25,3 @@ class CandidateProfile(BaseModel):
     commentToSkillNegative: str
     recommend: str
     recommended_position: str
-    socials: CandidateSocials
