@@ -51,4 +51,4 @@ async def get_github_repos(username: str) -> UserRepositoriesResponseModel:
 
 @social_router.post("/analyze-cv/")
 async def analyze_cv(cv: CandidateCV) -> CandidateProfile:
-    return await Analyzator().analyze_cv()
+    return await Analyzator().analyze_cv(cv)
