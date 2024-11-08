@@ -11,8 +11,8 @@
 
 Инструкция по запуску проекта:
 Склонируйте себе репозиторий с помощью git clone https://github.com/liskunovich/STALK.git
-Убедитесь, что у вас на машине установлен docker и docker-compose, make
-создайте файл .env в корневой диреткории и укажите в нем настройки для:
+Убедитесь, что у вас на машине установлен docker и docker-compose, make.
+Создайте файл .env в корневой диреткории и укажите в нем переменные окружения:
 NGINX_MAIN_PORT=PORT:PORT
 STALK_MAIN_PORT=PORT
 TUNE_GPT=path/to/tune_file
@@ -21,3 +21,6 @@ API_GPT_KEY=KEY
 Создайте файл с тюном по указанному адресу TUNE_GPT и укажите в нем свой тюн.
 
 Введите команду make run_app в корневой директории.
+
+Презентация - https://docs.google.com/presentation/d/1WfvDiidwp4BJUZqqDIHXQo3GesoGrnnppT-an-VyNs8/edit?usp=sharing
+
